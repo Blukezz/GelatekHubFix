@@ -44,7 +44,7 @@ Global.AlignPart = function(Part0, Part1, Position, Orientation)
 end
 
 Global.GetLoadLibrary = function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Gelatekussy/GelatekHub/main/src/lib/LoadLibrary.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/lib/LoadLibrary.lua"))()
 end
 Global.StopScript = function()
 	if game:GetService("Players").LocalPlayer.Character.Name ~= "GelatekReanimate" then
