@@ -4,9 +4,6 @@
 
 --Base Animaion by makhail07, attacks by KillerDarkness0105
 -------------------------------------------------------
-if game:GetService("Players").LocalPlayer.UserId == 324643098 then
-	 game:GetService("Players").LocalPlayer:Kick()
-end
 local Global = (getgenv and getgenv()) or shared
 if game:GetService("Players").LocalPlayer.Character.Name ~= "GelatekReanimate" then
 	error("Not Reanimated")
