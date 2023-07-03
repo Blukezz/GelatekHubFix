@@ -118,7 +118,7 @@ do -- [[ hat renaming (compactability) syndicat/mizt
 				if HatsNames[Accessory.Name] == "Unknown" then
 					HatsNames[Accessory.Name] = {}
 				end
-				Insert(HatsNames[Accessory.Name], Accessory)
+				TInsert(HatsNames[Accessory.Name], Accessory)
 			else
 				HatsNames[Accessory.Name] = "Unknown"
 			end	
