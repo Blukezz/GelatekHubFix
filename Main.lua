@@ -27,12 +27,13 @@ if isfile and isfolder and writefile and (getsynasset or getcustomasset) and (no
     )
 end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/packages/FunctionPack.lua"))()
+
 Global.GelatekHubConfig = {
 	['Keep BodyParts'] = false,
 	['Enable Collisions'] = false,
 	['Bullet Enabled'] = false,
 	['Animations'] = false,
-	['DefinedHats'] = {
+	['DefinedHats'] = Global.CustomHats or {
         [1] = {"rbxassetid://13778226115", CFN(0,0,0), CFA(0,0,0), true},
         [2] = {'nil', CFN(0,0,0), CFA(0,0,0), false},
 
