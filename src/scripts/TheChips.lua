@@ -231,7 +231,8 @@ local Create = RbxUtility.Create
 
 local Bullet = Global.FlingPart
 local funnyfunction
-if Bullet then
+if Bullet and not Global.PartDisconnected then
+	Global.PartDisconnected = true
 	if Bullet:FindFirstChild("AntiRotate") then
 		Bullet:FindFirstChild("AntiRotate"):Destroy()
 	end
@@ -307,10 +308,10 @@ function Damage(Part, hit, minim, maxim, knockback, Type, Property, Delay, HitSo
 			end
 		end
 		if blocked == false then
-			 if Bullet then funnyfunction(h.Parent) end
+			 if Global.FlingPart then funnyfunction(h.Parent) end
 			ShowDamage((Part.CFrame * CFrame.new(0, 0, (Part.Size.Z / 2)).p + Vector3.new(0, 1.5, 0)), -Damage, 1.5, tors.BrickColor.Color)
 		else
-			 if Bullet then funnyfunction(h.Parent) end
+			 if Global.FlingPart then funnyfunction(h.Parent) end
 			ShowDamage((Part.CFrame * CFrame.new(0, 0, (Part.Size.Z / 2)).p + Vector3.new(0, 1.5, 0)), -Damage, 1.5, tors.BrickColor.Color)
 		end
 		if Type == "Knockdown" then
