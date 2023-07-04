@@ -247,7 +247,7 @@ do -- [[ Scripts ]] --
         "Dual Ultima",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/DualUltima.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/DualUltima.lua")
             )()
         end
     )
@@ -255,7 +255,7 @@ do -- [[ Scripts ]] --
         "The Hotline",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/TheHotline.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/TheHotline.lua")
             )()
         end
     )
@@ -263,7 +263,7 @@ do -- [[ Scripts ]] --
         "Attack Rifle",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/AttackRifle.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/AttackRifle.lua")
             )()
         end
     )
@@ -271,7 +271,7 @@ do -- [[ Scripts ]] --
         "Carnage",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/TheCarnage.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/TheCarnage.lua")
             )()
         end
     )
@@ -279,7 +279,7 @@ do -- [[ Scripts ]] --
         "Neptunian V",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/NeptunianV.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/NeptunianV.lua")
             )()
         end
     )
@@ -288,7 +288,7 @@ do -- [[ Scripts ]] --
         function()
             loadstring(
                 game:HttpGet(
-                    "https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/ZenithAttackRifle.lua"
+                    "https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/ZenithAttackRifle.lua"
                 )
             )()
         end
@@ -297,7 +297,7 @@ do -- [[ Scripts ]] --
         "Chips",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/TheChips.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/TheChips.lua")
             )()
         end
     )
@@ -305,7 +305,7 @@ do -- [[ Scripts ]] --
         "Void Scythe",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/VoidScythe.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/VoidScythe.lua")
             )()
         end
     )
@@ -313,7 +313,7 @@ do -- [[ Scripts ]] --
         "Blue-Black Sniper",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/TheSniper.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/TheSniper.lua")
             )()
         end
     )
@@ -322,7 +322,7 @@ do -- [[ Scripts ]] --
         function()
             loadstring(
                 game:HttpGet(
-                    "https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/BanzaiBazooka.lua"
+                    "https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/BanzaiBazooka.lua"
                 )
             )()
         end
@@ -331,7 +331,7 @@ do -- [[ Scripts ]] --
         "Voodoo Doll",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/VoodooDoll.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/VoodooDoll.lua")
             )()
         end
     )
@@ -339,7 +339,7 @@ do -- [[ Scripts ]] --
         "Quenox - use only 5 hats pls",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/Quenox.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/Quenox.lua")
             )()
         end
     )
@@ -347,7 +347,7 @@ do -- [[ Scripts ]] --
         "Goner",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/Goner.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/Goner.lua")
             )()
         end
     )
@@ -356,7 +356,7 @@ do -- [[ Scripts ]] --
         "Gale Fighter",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/GaleFighter.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/GaleFighter.lua")
             )()
         end
     )
@@ -364,7 +364,7 @@ do -- [[ Scripts ]] --
         "Ender.",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/Ender.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/Ender.lua")
             )()
         end
     )
@@ -372,7 +372,7 @@ do -- [[ Scripts ]] --
         "Cadacus.",
         function()
             loadstring(
-                game:HttpGet("https://raw.githubusercontent.com/toldblock/GelatekHub/main/src/scripts/Cadacus.lua")
+                game:HttpGet("https://raw.githubusercontent.com/Blukezz/aaaaaaaaaaaaa/main/src/scripts/Cadacus.lua")
             )()
         end
     )
