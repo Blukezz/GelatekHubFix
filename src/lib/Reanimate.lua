@@ -312,8 +312,7 @@ Spawn(function()
 			Global.KryptonData.FlingPart.CanQuery = false
 			FlingPart.AssemblyLinearVelocity = V3N(FakeRoot.AssemblyLinearVelocity.X * 7, -30, FakeRoot.AssemblyLinearVelocity.Z * 7)
 			if not Global.PartDisconnected then
-				FlingPart.CFrame = FakeRoot.CFrame * CFN(0, Random(1,2)/100, 0)
-				FlingPart.AssemblyAngularVelocity = V3N(0, 5*Cos(Clock()*19), 0)
+				CFrameTo(Global.KryptonData.FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
 			if not Global.KryptonReanimateLoaded then
 				FlingPart.Velocity = V3N(0, 0, 0)
