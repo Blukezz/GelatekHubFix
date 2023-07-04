@@ -223,6 +223,7 @@ for _, Part in pairs(RealRigDescendants) do
 	end
 end
 
+--e
 local WaitTime = Players.RespawnTime + Ping:GetValue()/750
 local FlingPart; Spawn(function() if ReanimSettings['Bullet Enabled'] then
 	local Backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
@@ -237,6 +238,9 @@ local FlingPart; Spawn(function() if ReanimSettings['Bullet Enabled'] then
 		Highlight.Adornee = FlingPart
 		Highlight.Parent = FlingPart
 		Global.FlingPart = FlingPart
+		if Backpack then
+			Backpack:ClearAllChildren()
+		end
 	end
 end end)
 
@@ -303,10 +307,16 @@ Spawn(function()
 		end
 		
 		if FlingPart and FakeRoot then
+			Global.KryptonData.FlingPart.CanCollide = false
+			Global.KryptonData.FlingPart.CanTouch = false
+			Global.KryptonData.FlingPart.CanQuery = false
 			FlingPart.AssemblyLinearVelocity = V3N(FakeRoot.AssemblyLinearVelocity.X * 7, -30, FakeRoot.AssemblyLinearVelocity.Z * 7)
 			if not Global.PartDisconnected then
 				FlingPart.CFrame = FakeRoot.CFrame * CFN(0, Random(1,2)/100, 0)
 				FlingPart.AssemblyAngularVelocity = V3N(0, 5*Cos(Clock()*19), 0)
+			end
+			if not Global.KryptonReanimateLoaded then
+				FlingPart.Velocity = V3N(0, 0, 0)
 			end
 		end
 		
