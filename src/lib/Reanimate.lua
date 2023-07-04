@@ -227,8 +227,8 @@ end
 local WaitTime = Players.RespawnTime + Ping:GetValue()/750
 local FlingPart; Spawn(function() if ReanimSettings['Bullet Enabled'] then
 	local Backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
-	local Tool = Backpack:FindFirstChildOfClass("Tool")
-	if RealRig:FindFirstChildOfClass("Tool") then
+	local Tool = RealRig:FindFirstChildOfClass("Tool")
+	if Tool then
 		Tool.Parent = RealRig
 		FlingPart = Tool:WaitForChild("Handle")
 		FlingPart.Transparency = 0.5
@@ -239,6 +239,8 @@ local FlingPart; Spawn(function() if ReanimSettings['Bullet Enabled'] then
 		task.delay(WaitTime, function()
 			FlingPart.Massless = true
 		end)
+	else
+		print("Equip tool pls")		
 	end
 end end)
 
