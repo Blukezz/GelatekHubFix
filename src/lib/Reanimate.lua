@@ -307,9 +307,9 @@ Spawn(function()
 		end
 		
 		if FlingPart and FakeRoot then
-			Global.KryptonData.FlingPart.CanCollide = false
-			Global.KryptonData.FlingPart.CanTouch = false
-			Global.KryptonData.FlingPart.CanQuery = false
+			FlingPart.CanCollide = false
+			FlingPart.CanTouch = false
+			FlingPart.CanQuery = false
 			if not Global.Flinging then
 				CFrameTo(FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
