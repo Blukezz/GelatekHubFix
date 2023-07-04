@@ -18,7 +18,7 @@ if not Global.GelatekHubConfig then
 	Global.GelatekHubConfig = {} 
 end
 
-Global.PartDisconnected = false
+Global.Flinging = false
 Global.RealChar = nil
 Global.FlingPart = nil
 if not Global.TableOfEvents then Global.TableOfEvents = {} end
@@ -204,7 +204,7 @@ local function ClearUpData()
 	Delay(0.25, function()
 		Global.Stopped = false
 	end)
-	Global.PartDisconnected = false
+	Global.Flinging = false
 end
 
 for _, Part in pairs(RealRigDescendants) do
@@ -228,19 +228,17 @@ local WaitTime = Players.RespawnTime + Ping:GetValue()/750
 local FlingPart; Spawn(function() if ReanimSettings['Bullet Enabled'] then
 	local Backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
 	local Tool = Backpack:FindFirstChildOfClass("Tool")
-	if Tool then
+	if RealRig:FindFirstChildOfClass("Tool") then
 		Tool.Parent = RealRig
-		RealRig:FindFirstChildOfClass("Humanoid"):EquipTool(Tool)
-		FlingPart = Tool:WaitForChild("Handle", 20)
-		FlingPart.Transparency = 0
-		FlingPart.Massless = true
-		local Highlight = IN("SelectionBox")
-		Highlight.Adornee = FlingPart
-		Highlight.Parent = FlingPart
+		FlingPart = Tool:WaitForChild("Handle")
+		FlingPart.Transparency = 0.5
 		Global.FlingPart = FlingPart
 		if Backpack then
 			Backpack:ClearAllChildren()
 		end
+		task.delay(WaitTime, function()
+			FlingPart.Massless = true
+		end)
 	end
 end end)
 
@@ -310,9 +308,8 @@ Spawn(function()
 			Global.KryptonData.FlingPart.CanCollide = false
 			Global.KryptonData.FlingPart.CanTouch = false
 			Global.KryptonData.FlingPart.CanQuery = false
-			FlingPart.AssemblyLinearVelocity = V3N(FakeRoot.AssemblyLinearVelocity.X * 7, -30, FakeRoot.AssemblyLinearVelocity.Z * 7)
-			if not Global.PartDisconnected then
-				CFrameTo(Global.KryptonData.FlingPart, FakeRoot, CFN(0, -20, 0))
+			if not Global.Flinging then
+				CFrameTo(FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
 			if not Global.KryptonReanimateLoaded then
 				FlingPart.Velocity = V3N(0, 0, 0)
