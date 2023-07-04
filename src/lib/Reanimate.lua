@@ -18,6 +18,7 @@ if not Global.GelatekHubConfig then
 	Global.GelatekHubConfig = {} 
 end
 
+Global.PartDisconnected = false
 Global.Flinging = false
 Global.RealChar = nil
 Global.FlingPart = nil
@@ -307,10 +308,7 @@ Spawn(function()
 		end
 		
 		if FlingPart and FakeRoot then
-			FlingPart.CanCollide = false
-			FlingPart.CanTouch = false
-			FlingPart.CanQuery = false
-			if not Global.Flinging then
+			if not Global.Flinging or not Global.PartDisconnected then
 				CFrameTo(FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
 			if not Global.KryptonReanimateLoaded then
