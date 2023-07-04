@@ -231,40 +231,32 @@ local Create = RbxUtility.Create
 
 local Bullet = Global.FlingPart
 local funnyfunction
-local funnyattacking = "yes"
 if Bullet then
 	if Bullet:FindFirstChild("AntiRotate") then
 		Bullet:FindFirstChild("AntiRotate"):Destroy()
 	end
-	Global.PartDisconnected = true
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
 	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-	--
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		Bullet.RotVelocity = Vector3.new(0, 7500, 0)
-		if funnyattacking == "yes" then
-			Pos.Position = RootTo.Position
+	local Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
+	local part
+	table.insert(Global.TableOfEvents, game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet and Global.Flinging and part ~= nil then
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = part.CFrame * Rotation
 		end
 	end))
 	funnyfunction = function(target)
-		local part = target:FindFirstChild("Head") or target:FindFirstChildOfClass("BasePart")
-		funnyattacking = "no"
+		part = target:FindFirstChild("Head") or target:FindFirstChildOfClass("BasePart")
 		task.spawn(function()
 			for i = 1,20 do
 				if part.RotVelocity.Magnitude > 50 then
 					break
 				end
-				Pos.Position = part.Position
-				wait(0.02)
+				Global.Flinging = true
+				wait(0.05)
+				Global.Flinging = false
 			end
-			funnyattacking = "yes"
 		end)
 	end
 end
