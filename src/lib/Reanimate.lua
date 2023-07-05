@@ -310,7 +310,7 @@ Spawn(function()
 		
 		if FlingPart and Global.FlingPartAttachment then
 			if not Global.Flinging or not Global.PartDisconnected and not Global.CustomNotFlinging then
-				CFrameTo(FlingPart, Global.FlingPartAttachment, Global.FlingPartCf)
+				CFrameTo(FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
 			if not Global.KryptonReanimateLoaded then
 				FlingPart.Velocity = V3N(0, 0, 0)
