@@ -23,6 +23,7 @@ Global.Flinging = false
 Global.RealChar = nil
 Global.FlingPart = nil
 Global.FlingPartAttachment = nil
+Global.FlingPartCf = CFrame.new(0, -20, 0)
 if not Global.TableOfEvents then Global.TableOfEvents = {} end
 
 local Cos = math.cos
