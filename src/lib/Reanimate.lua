@@ -232,7 +232,7 @@ local FlingPart; Spawn(function() if ReanimSettings['Bullet Enabled'] then
 	if Tool then
 		Tool.Parent = RealRig
 		FlingPart = Tool:WaitForChild("Handle")
-		FlingPart.Transparency = 0.2
+		FlingPart.Transparency = 0.8
 		Global.FlingPart = FlingPart
 		if Backpack then
 			Backpack:ClearAllChildren()
