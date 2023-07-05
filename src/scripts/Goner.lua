@@ -578,37 +578,28 @@ local TRAIL = Instance.new("Trail"); do
 	end)
 end
 local Hat = CHARACTER:FindFirstChild("K2")
-local Bullet = Global.RealChar:FindFirstChild("Bullet")
 if Hat then
 	SWORD.Transparency = 1
 	Hat.Handle:BreakJoints()
 	Global.AlignPart(Hat.Handle,SWORD, Vector3.new(0,-0.5,0), Vector3.new(-0, 0, -117))
 end
-if Bullet then
+
+local Bullet = Global.FlingPart
+if Bullet and not Global.PartDisconnected then
+	Global.PartDisconnected = true
 	if Bullet:FindFirstChild("AntiRotate") then
 		Bullet:FindFirstChild("AntiRotate"):Destroy()
 	end
-	Global.PartDisconnected = true
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = SWORD
-	if Hat then
-		RootTo = Hat.Handle
-	end
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		Pos.Position = RootTo.Position
+	local Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
+	local part
+	table.insert(Global.TableOfEvents, game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet then
+			Global.Flinging = true
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = SWORD.CFrame * Rotation
+		end
 	end))
 end
 local SOUND_SNAP = 150315649
