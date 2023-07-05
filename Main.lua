@@ -97,7 +97,7 @@ Reanimate:MakeToggle(
     end
 )
 Reanimate:MakeToggle(
-    "Tool Fling (TEMPORARY NOT WORKING)",
+    "Tool Fling (FIXED)",
     function(Bool)
         Global.GelatekHubConfig["Bullet Enabled"] = Bool
     end
