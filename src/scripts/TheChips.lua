@@ -237,7 +237,6 @@ if Bullet and not Global.PartDisconnected then
 		Bullet:FindFirstChild("AntiRotate"):Destroy()
 	end
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 	local Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
 	local part
 	table.insert(Global.TableOfEvents, game:GetService("RunService").Heartbeat:Connect(function()
