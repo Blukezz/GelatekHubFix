@@ -23,6 +23,7 @@ Global.Flinging = false
 Global.RealChar = nil
 Global.FlingPart = nil
 Global.FlingPartAttachment = nil
+Global.FlingWhenNotFling = false
 Global.FlingPartCf = CFrame.new(0, -20, 0)
 if not Global.TableOfEvents then Global.TableOfEvents = {} end
 
@@ -295,7 +296,9 @@ Spawn(function()
 			end
 		end
 	end
-	
+
+	local FlingPartCf = Global.FlingPartCf
+	local Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
 	TInsert(Events, RunService.PostSimulation:Connect(function()
 		CFrameTo(T1, FakeTorso, T1_CF)
 		CFrameTo(T2, FakeTorso, T2_CF)
@@ -313,9 +316,23 @@ Spawn(function()
 		
 		if FlingPart and Global.FlingPartAttachment then
 			if not Global.Flinging or not Global.PartDisconnected and Global.FlingPartAttachment == FakeRoot then
-				CFrameTo(FlingPart, Global.FlingPartAttachment, CFN(0, -20, 0))
+				if Global.FlingWhenNotFling then
+					Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
+					FlingPartCf = Global.FlingPartCf * Rotation
+					FlingPart.RotVelocity = Vector3.new(0, 7500, 0)
+				else
+					FlingPartCf = Global.FlingPartCf	
+				end
+				CFrameTo(FlingPart, Global.FlingPartAttachment, FlingPartCf)
 			elseif not Global.Flinging or not Global.PartDisconnected then
-				CFrameTo(FlingPart, Global.FlingPartAttachment, CFN(0, 0, 0))
+				if Global.FlingWhenNotFling then
+					Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
+					FlingPartCf = Global.FlingPartCf * Rotation
+					FlingPart.RotVelocity = Vector3.new(0, 7500, 0)
+				else
+					FlingPartCf = Global.FlingPartCf
+				end
+				CFrameTo(FlingPart, Global.FlingPartAttachment, FlingPartCf)
 			end
 			if not Global.KryptonReanimateLoaded then
 				FlingPart.Velocity = V3N(0, 0, 0)
