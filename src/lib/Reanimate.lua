@@ -22,6 +22,7 @@ Global.PartDisconnected = false
 Global.Flinging = false
 Global.RealChar = nil
 Global.FlingPart = nil
+Global.FlingPartAttachment = nil
 if not Global.TableOfEvents then Global.TableOfEvents = {} end
 
 local Cos = math.cos
@@ -110,6 +111,7 @@ local FakeRig = IN("Model"); do
 	FakeHats = CI("Folder", {Name = "FakeHats", Parent = TestService})
 	FakeRig.PrimaryPart = FakeHead; FakeRig.Name = "GelatekReanimate"; FakeRig.Parent = Workspace; FakeRigDescendants = FakeRig:GetDescendants(); FakeRig:MoveTo(RealRig.PrimaryPart.Position + V3N(0, 5, 0))
 end
+Global.FlingPartAttachment = FakeTorso
 
 do -- [[ hat renaming (compactability) syndicat/mizt
 	local HatsNames = {}
@@ -306,10 +308,13 @@ Spawn(function()
 				CFrameTo(Handle, FakeHandle, CF0)
 			end
 		end
+
 		
-		if FlingPart and FakeRoot then
-			if not Global.Flinging or not Global.PartDisconnected then
-				CFrameTo(FlingPart, FakeRoot, CFN(0, -20, 0))
+		if FlingPart and Global.FlingPartAttachment then
+			if not Global.Flinging or not Global.PartDisconnected and Global.FlingPartAttachment == FakeRoot then
+				CFrameTo(FlingPart, Global.FlingPartAttachment, CFN(0, -20, 0))
+			elseif not Global.Flinging or not Global.PartDisconnected then
+				CFrameTo(FlingPart, Global.FlingPartAttachment, CFN(0, 0, 0))
 			end
 			if not Global.KryptonReanimateLoaded then
 				FlingPart.Velocity = V3N(0, 0, 0)
