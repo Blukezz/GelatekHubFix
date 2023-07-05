@@ -356,49 +356,37 @@ end
 function rayCast(Pos, Dir, Max, Ignore)  -- Origin Position , Direction, MaxDistance , IgnoreDescendants
 return game:service("Workspace"):FindPartOnRay(Ray.new(Pos, Dir.unit * (Max or 999.999)), Ignore) 
 end 
-local Bullet = Global.RealChar:FindFirstChild("Bullet")
+local Bullet = Global.FlingPart
 local funnyfunction
-local funnyattacking = "yes"
-
-if Bullet then
+if Bullet and not Global.PartDisconnected then
+	Global.PartDisconnected = true
 	if Bullet:FindFirstChild("AntiRotate") then
 		Bullet:FindFirstChild("AntiRotate"):Destroy()
 	end
-	Global.PartDisconnected = true
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-	if Hat then
-		RootTo = Hat.Handle
-	end
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		if funnyattacking == "yes" then
-			Pos.Position = RootTo.Position
+	local Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
+	local part
+	table.insert(Global.TableOfEvents, game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet and Global.Flinging and part ~= nil then
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = part.CFrame * Rotation
 		end
 	end))
 	funnyfunction = function(target)
-		local part = target:FindFirstChild("Head")
-		funnyattacking = "no"
-		for i = 1,15 do
-			Pos.Position = part.Position
-			wait(0.03)
-		end
-		funnyattacking = "yes"
+		part = target:FindFirstChild("Head") or target:FindFirstChildOfClass("BasePart")
+		task.spawn(function()
+			for i = 1,20 do
+				if part.RotVelocity.Magnitude > 50 then
+					break
+				end
+				Global.Flinging = true
+				wait(0.05)
+				Global.Flinging = false
+			end
+		end)
 	end
 end
-
 Damagefunc=function(Part,hit,minim,maxim,knockback,Type,Property,Delay,KnockbackType,decreaseblock)
         if hit.Parent==nil then
                 return
