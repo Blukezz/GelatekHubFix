@@ -21,7 +21,7 @@ end
 Global.PartDisconnected = false
 Global.Flinging = false
 Global.RealChar = nil
-Global.CustomNotFlinging = false
+Global.FlingPart = nil
 if not Global.TableOfEvents then Global.TableOfEvents = {} end
 
 local Cos = math.cos
@@ -292,7 +292,7 @@ Spawn(function()
 			end
 		end
 	end
-
+	
 	TInsert(Events, RunService.PostSimulation:Connect(function()
 		CFrameTo(T1, FakeTorso, T1_CF)
 		CFrameTo(T2, FakeTorso, T2_CF)
@@ -306,10 +306,9 @@ Spawn(function()
 				CFrameTo(Handle, FakeHandle, CF0)
 			end
 		end
-
 		
-		if FlingPart and Global.FlingPartAttachment then
-			if not Global.Flinging or not Global.PartDisconnected and not Global.CustomNotFlinging then
+		if FlingPart and FakeRoot then
+			if not Global.Flinging or not Global.PartDisconnected then
 				CFrameTo(FlingPart, FakeRoot, CFN(0, -20, 0))
 			end
 			if not Global.KryptonReanimateLoaded then
