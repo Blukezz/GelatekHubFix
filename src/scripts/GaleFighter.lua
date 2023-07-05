@@ -241,31 +241,23 @@ end
 end))
 
 
-local Bullet = Global.RealChar:FindFirstChild("Bullet")
+local Bullet = Global.FlingPart
 local funnyfunction
-local funnyattacking = "yes"
-if Bullet then
+if Bullet and not Global.PartDisconnected then
+	Global.PartDisconnected = true
 	if Bullet:FindFirstChild("AntiRotate") then
 		Bullet:FindFirstChild("AntiRotate"):Destroy()
 	end
-	Global.PartDisconnected = true
 	local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-	local RootTo = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-	local Pos = Instance.new("BodyPosition")
-	Pos.MaxForce = Vector3.new(1,1,1)*math.huge
-	Pos.P = 25000
-	Pos.D = 125
-	Pos.Name = "Movement"
-	Pos.Position = Bullet.Position
-	Pos.Parent = Bullet
-	local Flinger = Instance.new("BodyAngularVelocity")
-	Flinger.MaxTorque = Vector3.new(1,1,1)*math.huge
-	Flinger.P = math.huge
-	Flinger.AngularVelocity = Vector3.new(5000,5000,5000)
-	Flinger.Name = "Flinger"
-	Flinger.Parent = Bullet
-	table.insert(Events, game:GetService("RunService").PostSimulation:Connect(function()
-		Pos.Position = RootTo.Position
+	local Rotation = CFrame.Angles(math.random(-360,360),math.random(-360,360),math.random(-360,360))
+	local part
+	table.insert(Global.TableOfEvents, game:GetService("RunService").Heartbeat:Connect(function()
+		Rotation = CFrame.Angles(math.random(-360, 360), math.random(-360, 360), math.random(-360, 360))
+		if Bullet then
+			Global.Flinging = true
+			Bullet.RotVelocity = Vector3.new(0, 7500, 0)
+			Bullet.CFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame * Rotation
+		end
 	end))
 end
 
